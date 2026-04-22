@@ -328,8 +328,75 @@ if (document.querySelector(".services-hero")) {
         duration: 2,
         ease: "power4.out",
         startAt: { opacity: 0, scale: 1.05 }
-    }, "-=0.5");
-}
+    }, "-=0.5");}
 
+// =========================================
+// Mobile Navigation Menu Logic
+// =========================================
+document.addEventListener('DOMContentLoaded', () => {
+    const header = document.querySelector('header');
+    const nav = document.querySelector('nav');
+    
+    if (header && nav) {
+        // Create hamburger icon
+        const hamburger = document.createElement('div');
+        hamburger.className = 'hamburger-menu';
+        hamburger.innerHTML = `
+            <span></span>
+            <span></span>
+            <span></span>
+        `;
+        
+        // Create close icon inside nav
+        const closeBtn = document.createElement('div');
+        closeBtn.className = 'close-menu';
+        closeBtn.innerHTML = `
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        `;
+        
+        // Insert elements
+        nav.prepend(closeBtn);
+        header.appendChild(hamburger);
+        
+        // Toggle side menu logic
+        hamburger.addEventListener('click', () => {
+            nav.classList.add('active');
+        });
+        
+        closeBtn.addEventListener('click', () => {
+            nav.classList.remove('active');
+        });
 
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (nav.classList.contains('active') && !nav.contains(e.target) && !hamburger.contains(e.target)) {
+                nav.classList.remove('active');
+            }
+        });
+        
+        // Close menu when clicking any link
+        nav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('active');
+            });
+        });
 
+        // Ensure elements visibility toggles correctly based on screen size
+        const handleResize = () => {
+            if (window.innerWidth > 768) {
+                hamburger.style.display = 'none';
+                closeBtn.style.display = 'none';
+                nav.classList.remove('active');
+            } else {
+                hamburger.style.display = 'flex';
+                closeBtn.style.display = 'block';
+            }
+        };
+        
+        window.addEventListener('resize', handleResize);
+        handleResize(); // trigger on load
+    }
+});
