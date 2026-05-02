@@ -1,47 +1,36 @@
 // Register ScrollTrigger
 gsap.registerPlugin(ScrollTrigger);
 
+// Hero Entrance Animation
+gsap.from(".hero", {
+    scale: 1.1,
+    duration: 3,
+    ease: "power2.out"
+});
+
 // Hero Text Animation
 gsap.from(".hero h1", {
-    y: 50,
+    x: -100,
     opacity: 0,
-    duration: 1,
+    duration: 1.5,
     ease: "power4.out",
-    delay: 0.2
+    delay: 0.5
 });
 
 gsap.from(".hero p", {
-    y: 30,
+    x: -50,
     opacity: 0,
-    duration: 0.8,
+    duration: 1.2,
     ease: "power3.out",
-    delay: 0.4
+    delay: 0.8
 });
 
-// Removed global button animation to avoid conflicts
-// gsap.from(".btn-work", { ... });
-
-// Floating Images Animation
-const floatImages = document.querySelectorAll('.hero-img');
-
-floatImages.forEach((img, index) => {
-    // Initial entrance
-    gsap.from(img, {
-        scale: 0,
-        opacity: 0,
-        duration: 1.5,
-        ease: "expo.out",
-        delay: 0.2 * index
-    });
-
-    // Continuous floating effect
-    gsap.to(img, {
-        y: "+=20",
-        duration: 2 + index,
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut"
-    });
+gsap.from(".hero-btns", {
+    x: -30,
+    opacity: 0,
+    duration: 1,
+    ease: "power2.out",
+    delay: 1.1
 });
 
 // Services Section Animation
@@ -59,26 +48,26 @@ gsap.from(".service-card", {
 });
 
 // About Section Animation
-gsap.from(".about-image", {
+gsap.from(".about-content", {
     scrollTrigger: {
         trigger: ".about",
         start: "top 80%",
     },
-    x: -100,
+    x: -50,
     opacity: 0,
     duration: 1.2,
     ease: "power3.out"
 });
 
-gsap.from(".about-card", {
+gsap.from(".about-visual", {
     scrollTrigger: {
         trigger: ".about",
         start: "top 70%",
     },
-    x: 100,
+    scale: 0.8,
     opacity: 0,
     duration: 1.2,
-    ease: "power3.out",
+    ease: "back.out(1.7)",
     delay: 0.3
 });
 
@@ -95,16 +84,16 @@ gsap.from(".cta-content", {
 });
 
 // Projects Showcase Animation
-gsap.from(".section-header-left h2, .section-header-left p", {
+gsap.from(".section-header-portfolio h2, .section-header-portfolio p", {
     scrollTrigger: {
         trigger: ".projects-showcase",
         start: "top 80%",
     },
     y: 50,
     opacity: 0,
-    duration: 1,
-    stagger: 0.2,
-    ease: "power3.out"
+    duration: 1.2,
+    stagger: 0.3,
+    ease: "power4.out"
 });
 
 gsap.from(".project-item", {
@@ -112,11 +101,11 @@ gsap.from(".project-item", {
         trigger: ".projects-grid",
         start: "top 85%",
     },
-    y: 60,
+    y: 100,
     opacity: 0,
-    duration: 1,
+    duration: 1.5,
     stagger: 0.2,
-    ease: "expo.out"
+    ease: "power4.out"
 });
 
 // Innovation Section Animation
@@ -148,107 +137,116 @@ whyTimeline.from(".deco-curve", { x: -30, opacity: 0, duration: 0.8, ease: "expo
            .from(".why-list li", { x: -30, opacity: 0, duration: 0.5, stagger: 0.12 }, "-=0.2")
            .from(".why-footer-action", { y: 20, opacity: 0, duration: 0.5 }, "-=0.2")
            .from(".why-image", { y: 100, opacity: 0, duration: 1.2, ease: "power4.out" }, "-=0.3");
-// Testimonials Slider Logic
-const testimonials = [
-    {
-        text: '"The team transformed our space into something truly exceptional. Professional, creative, and detail-oriented. From concept to execution, everything was handled perfectly. Highly recommended. The design exceeded our expectations and perfectly matched our vision."',
-        author: "Shahd Mohamed",
-        image: "imges/Frame 2147224957.png"
-    },
-    {
-        text: '"Working with DEBO was a game-changer for our office project. Their ability to blend aesthetics with extreme functionality was impressive. The project was completed on time and exceeded all our branding goals."',
-        author: "Ahmed Hassan",
-        image: "imges/Frame 2147224957.png" // Reusing same profile or can be changed
-    },
-    {
-        text: '"Exceptional attention to detail. They didn\'t just design a house; they designed a home that perfectly fits our lifestyle. The process was transparent and the execution was flawless."',
-        author: "Mariam Ali",
-        image: "imges/Frame 2147224957.png"
-    }
-];
-
-let currentTestimonial = 0;
-const testimonialCard = document.getElementById('testimonial-card');
-const prevBtn = document.getElementById('prev-testimonial');
-const nextBtn = document.getElementById('next-testimonial');
-
-if (testimonialCard && nextBtn && prevBtn) {
-    function updateTestimonial(index) {
-        const data = testimonials[index];
-        
-        gsap.to(testimonialCard, {
-            opacity: 0,
-            x: -20,
-            duration: 0.3,
-            onComplete: () => {
-                testimonialCard.querySelector('.testimonial-text').innerText = data.text;
-                testimonialCard.querySelector('.testimonial-author span').innerText = data.author;
-                testimonialCard.querySelector('.testimonial-author img').src = data.image;
-                
-                gsap.to(testimonialCard, {
-                    opacity: 1,
-                    x: 0,
-                    duration: 0.4,
-                    ease: "power2.out"
-                });
-            }
-        });
-
-        // Update button states
-        [prevBtn, nextBtn].forEach(btn => btn.classList.remove('active'));
-        if(index === 0) prevBtn.classList.add('active');
-        else nextBtn.classList.add('active');
-    }
-
-    function nextTestimonial() {
-        currentTestimonial = (currentTestimonial + 1) % testimonials.length;
-        updateTestimonial(currentTestimonial);
-    }
-
-    function prevTestimonial() {
-        currentTestimonial = (currentTestimonial - 1 + testimonials.length) % testimonials.length;
-        updateTestimonial(currentTestimonial);
-    }
-
-    // Autoplay Logic
-    let autoplay = setInterval(nextTestimonial, 5000);
-
-    function resetAutoplay() {
-        clearInterval(autoplay);
-        autoplay = setInterval(nextTestimonial, 5000);
-    }
-
-    nextBtn.addEventListener('click', () => {
-        nextTestimonial();
-        resetAutoplay();
-    });
-
-    prevBtn.addEventListener('click', () => {
-        prevTestimonial();
-        resetAutoplay();
-    });
-
-    // Pause autoplay on hover
-    const testimonialContainer = document.querySelector('.testimonial-container');
-    if (testimonialContainer) {
-        testimonialContainer.addEventListener('mouseenter', () => clearInterval(autoplay));
-        testimonialContainer.addEventListener('mouseleave', () => {
-            clearInterval(autoplay);
-            autoplay = setInterval(nextTestimonial, 5000);
-        });
-    }
-}
-
-// Initial animation for testimonials section
-gsap.from(".testimonials", {
+// // Testimonials Section Animation
+gsap.from(".testimonials-header", {
     scrollTrigger: {
         trigger: ".testimonials",
         start: "top 80%",
     },
-    opacity: 0,
     y: 50,
-    duration: 1
+    opacity: 0,
+    duration: 1,
+    ease: "power3.out"
 });
+
+gsap.from(".testimonial-slider-container", {
+    scrollTrigger: {
+        trigger: ".testimonials",
+        start: "top 70%",
+    },
+    scale: 0.95,
+    opacity: 0,
+    duration: 1.2,
+    ease: "expo.out"
+});
+
+// Testimonials Slider Logic
+const testimonialData = [
+    {
+        text: '"The team transformed our space into something truly exceptional. Professional, creative, and detail-oriented. From concept to execution, everything was handled perfectly. Highly recommended.The design exceeded our expectations and perfectly matched our vision."',
+        author: "Shahd Mohamed",
+        avatar: "imges/Frame 2147224957.png"
+    },
+    {
+        text: '"Working with DEBO was a game-changer for our office project. Their ability to blend aesthetics with extreme functionality was impressive. The project was completed on time and exceeded all our branding goals."',
+        author: "Ahmed Hassan",
+        avatar: "imges/Frame 2147224957.png"
+    },
+    {
+        text: '"Exceptional attention to detail. They didn\'t just design a house; they designed a home that perfectly fits our lifestyle. The process was transparent and the execution was flawless."',
+        author: "Mariam Ali",
+        avatar: "imges/Frame 2147224957.png"
+    }
+];
+
+let currentIdx = 0;
+const sliderContainer = document.querySelector('.testimonial-slider-container');
+const prevBtn = document.getElementById('prev-test');
+const nextBtn = document.getElementById('next-test');
+
+function updateSlider(index, direction = 'next') {
+    const currentSlide = document.querySelector('.testimonial-slide.active');
+    const glassBox = currentSlide.querySelector('.testimonial-glass-box');
+    
+    // Determine entrance/exit offsets based on direction
+    const exitX = direction === 'next' ? -40 : 40;
+    const enterX = direction === 'next' ? 40 : -40;
+
+    // Animation for the content change within the glass box
+    gsap.to(glassBox, {
+        opacity: 0,
+        x: exitX,
+        scale: 0.95,
+        duration: 0.4,
+        onComplete: () => {
+            currentSlide.innerHTML = `
+                <div class="testimonial-glass-box">
+                    <p class="testimonial-text">${testimonialData[index].text}</p>
+                    <div class="testimonial-client">
+                        <div class="client-avatar">
+                            <img src="${testimonialData[index].avatar}" alt="${testimonialData[index].author}">
+                        </div>
+                        <span class="client-name">${testimonialData[index].author}</span>
+                    </div>
+                </div>
+            `;
+            const newGlassBox = currentSlide.querySelector('.testimonial-glass-box');
+            gsap.fromTo(newGlassBox, 
+                { opacity: 0, x: enterX, scale: 0.95 }, 
+                { opacity: 1, x: 0, scale: 1, duration: 0.7, ease: "power2.out" }
+            );
+        }
+    });
+
+    if(prevBtn && nextBtn) {
+        prevBtn.classList.toggle('active', index !== 0);
+        nextBtn.classList.toggle('active', index !== testimonialData.length - 1);
+    }
+}
+
+function nextTestimonial() {
+    currentIdx = (currentIdx + 1) % testimonialData.length;
+    updateSlider(currentIdx, 'next');
+}
+
+// Autoplay every 5 seconds
+let testimonialInterval = setInterval(nextTestimonial, 5000);
+
+if(nextBtn && prevBtn) {
+    nextBtn.addEventListener('click', () => {
+        clearInterval(testimonialInterval);
+        currentIdx = (currentIdx + 1) % testimonialData.length;
+        updateSlider(currentIdx, 'next');
+        testimonialInterval = setInterval(nextTestimonial, 5000);
+    });
+
+    prevBtn.addEventListener('click', () => {
+        clearInterval(testimonialInterval);
+        currentIdx = (currentIdx - 1 + testimonialData.length) % testimonialData.length;
+        updateSlider(currentIdx, 'prev');
+        testimonialInterval = setInterval(nextTestimonial, 5000);
+    });
+}
 
 // Navbar background change on scroll
 window.addEventListener('scroll', () => {
