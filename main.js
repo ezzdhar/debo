@@ -326,7 +326,35 @@ if (document.querySelector(".services-hero")) {
         duration: 2,
         ease: "power4.out",
         startAt: { opacity: 0, scale: 1.05 }
-    }, "-=0.5");}
+    }, "-=0.5");
+}
+
+// How We Work Animation
+if (document.querySelector(".how-we-work")) {
+    gsap.from(".how-we-work-header h2, .how-we-work-header p", {
+        scrollTrigger: {
+            trigger: ".how-we-work",
+            start: "top 80%",
+        },
+        y: 30,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.2,
+        ease: "power2.out"
+    });
+
+    gsap.from(".how-item", {
+        scrollTrigger: {
+            trigger: ".how-we-work-grid",
+            start: "top 80%",
+        },
+        y: 40,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.15,
+        ease: "power3.out"
+    });
+}
 
 // =========================================
 // Mobile Navigation Menu Logic

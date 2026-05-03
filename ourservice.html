@@ -15,7 +15,7 @@
 
     <header>
         <div class="logo-container">
-            <img src="imges/logo.png" alt="Logo">
+            <img src="imges/logobig.png" alt="Logo">
         </div>
         <nav>
             <ul>
@@ -37,14 +37,17 @@
                 <p class="reveal-subtext">Welcome to our company</p>
             </div>
             <div class="hero-visual">
-                <img src="imges/Frame 2147224964.png" alt="Architectural Sketch" class="sketch-img">
+                <img src="imges/2160 1.png" alt="Architectural Sketch" class="sketch-img">
             </div>
         </section>
 
         <!-- Services Grid Section (from Home Page) -->
-        <section class="services services-page-grid">
+        <section class="services">
+            <!-- <div class="section-header">
+                <h2>Our Services</h2>
+            </div> -->
             <div class="services-grid">
-                <div class="service-card active">
+                <div class="service-card  active">
                     <div class="service-icon">
                         <img src="imges/Layer_19.png" alt="Architectural Design Icon">
                     </div>
@@ -75,35 +78,89 @@
                 </div>
             </div>
         </section>
-    </main>
-    <section class="testimonials">
-        <h2 class="testimonial-title">What <span>Our Clients</span> Say ?</h2>
-        <p class="testimonial-sub">What our clients say about our work and commitment to excellence.</p>
-
-        <div class="testimonial-container">
-            <div class="testimonial-content-wrapper">
-                <div class="testimonial-card" id="testimonial-card">
-                    <p class="testimonial-text">"The team transformed our space into something truly exceptional.
-                        Professional, creative, and detail-oriented. From concept to execution, everything was
-                        handled perfectly. Highly recommended. The design exceeded our expectations and perfectly
-                        matched our vision."</p>
-                    <div class="testimonial-author">
-                        <img src="imges/Frame 2147224957.png" alt="Shahd Mohamed">
-                        <span>Shahd Mohamed</span>
+        <!-- How We Work Section -->
+        <section class="how-we-work">
+            <div class="how-we-work-header">
+                <h2>How We Work</h2>
+                <p>A clear and efficient process designed to turn your vision into reality with precision and
+                    creativity.
+                </p>
+            </div>
+            <div class="how-we-work-grid">
+                <div class="how-item">
+                    <div class="how-icon">
+                        <img src="imges/Layer_25 (1).png" alt="Consultation Icon">
+                    </div>
+                    <div class="how-content">
+                        <h3>Consultation & Discovery</h3>
+                        <p>We understand your needs, goals, and design preferences.</p>
                     </div>
                 </div>
-                <div class="testimonial-nav">
-                    <button id="prev-testimonial" class="nav-btn"><svg viewBox="0 0 24 24">
-                            <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" fill="none" />
-                        </svg></button>
-                    <button id="next-testimonial" class="nav-btn active"><svg viewBox="0 0 24 24">
-                            <path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" fill="none" />
-                        </svg></button>
+                <div class="how-item">
+                    <div class="how-icon">
+                        <img src="imges/Layer_1 (3).png" alt="Planning Icon">
+                    </div>
+                    <div class="how-content">
+                        <h3>Concept & Planning</h3>
+                        <p>We develop creative concepts and detailed project plans.</p>
+                    </div>
+                </div>
+                <div class="how-item">
+                    <div class="how-icon">
+                        <img src="imges/Layer_1 (4).png" alt="Design Icon">
+                    </div>
+                    <div class="how-content">
+                        <h3>Design Development</h3>
+                        <p>We refine the design with materials, layouts, and details.</p>
+                    </div>
+                </div>
+                <div class="how-item">
+                    <div class="how-icon">
+                        <img src="imges/Layer_1 (5).png" alt="Delivery Icon">
+                    </div>
+                    <div class="how-content">
+                        <h3>Execution & Delivery</h3>
+                        <p>We bring the design to life and deliver the final result.</p>
+                    </div>
                 </div>
             </div>
-            <div class="testimonial-image">
-                <img src="imges/Frame 2147224956.png" alt="Client Project">
+        </section>
+    </main>
+
+    <section class="testimonials">
+        <div class="testimonials-header">
+            <h2 class="testimonial-title">What <span>Our Clients</span> Say ?</h2>
+            <p class="testimonial-sub">What our clients say about our work and commitment to excellence.</p>
+        </div>
+
+        <div class="testimonial-slider-container" style="background-image: url('imges/Frame 2147224956 (1).png');">
+            <div class="testimonial-slide active">
+                <div class="testimonial-glass-box">
+                    <p class="testimonial-text">"The team transformed our space into something truly exceptional.
+                        Professional, creative, and detail-oriented. From concept to execution, everything was
+                        handled perfectly. Highly recommended.The design exceeded our expectations and perfectly
+                        matched our vision."</p>
+                    <div class="testimonial-client">
+                        <div class="client-avatar">
+                            <img src="imges/Frame 2147224957.png" alt="Shahd Mohamed">
+                        </div>
+                        <span class="client-name">Shahd Mohamed</span>
+                    </div>
+                </div>
             </div>
+        </div>
+
+        <div class="testimonial-controls">
+            <button id="prev-test" class="ctrl-btn">
+                <svg viewBox="0 0 24 24">
+                    <path d="M15 18l-6-6 6-6" />
+                </svg>
+            </button>
+            <button id="next-test" class="ctrl-btn active">
+                <svg viewBox="0 0 24 24">
+                    <path d="M9 18l6-6-6-6" />
+                </svg>
+            </button>
         </div>
     </section>
     <footer>

@@ -295,6 +295,7 @@ nav ul li a.active {
     font-family: var(--font-heading);
     font-size: 24px;
     margin-bottom: 20px;
+    font-weight: 500;
 }
 
 .service-card p {
@@ -708,7 +709,7 @@ nav ul li a.active {
 .testimonials {
     padding: 100px 5%;
     background-color: #F2F1EE;
-    background-image: 
+    background-image:
         linear-gradient(to right, rgba(0, 0, 0, 0.1) 1px, transparent 1px),
         linear-gradient(to left, rgba(0, 0, 0, 0.1) 1px, transparent 1px);
     background-size: 25% 100%, 100% 100%;
@@ -1258,32 +1259,30 @@ footer {
    ========================================= */
 
 .services-hero {
-    padding-top: 200px;
-    padding-bottom: 80px;
-    background-color: var(--bg-dark);
+    padding-top: 150px;
+    padding-bottom: 0;
+    background-color: #000;
+    /* Pure black like the image */
     text-align: left;
-    /* Changed from center to left */
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    /* Aligning children to the left */
     overflow: hidden;
-    padding-left: 10%;
-    /* Adding left padding to match the image */
 }
 
 .hero-text-content {
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     width: 100%;
-    padding: 0 5%;
+    padding-left: 10%;
 }
 
 .services-hero h1 {
     font-family: var(--font-heading);
-    font-size: clamp(42px, 7vw, 56px);
+    font-size: clamp(48px, 8vw, 56px);
+    /* Increased size */
     font-weight: 600;
     margin-bottom: 5px;
-    letter-spacing: -1.5px;
+    letter-spacing: -2px;
     opacity: 0;
     line-height: 1.1;
     text-transform: capitalize;
@@ -1303,19 +1302,19 @@ footer {
 
 .hero-visual {
     width: 100%;
-    max-width: 1200px;
+    max-width: 1390px;
+    /* Further limit width */
     margin: 40px auto 0;
-    /* Center the image container */
     display: flex;
     justify-content: center;
-    padding: 0 5%;
+    padding: 0 8%;
+    /* Increased side padding */
 }
 
 .sketch-img {
     width: 100%;
     height: auto;
-    max-height: 75vh;
-    object-fit: contain;
+    display: block;
     opacity: 0;
     transform: scale(1.02);
 }
@@ -2500,6 +2499,107 @@ footer {
 
     .section-header-left h2 {
         font-size: 26px;
+    }
+}
+
+/* How We Work Section */
+.how-we-work {
+    padding: 100px 10%;
+    background-color: #ffffff;
+    background-image: none; /* Explicitly remove lines if any */
+    text-align: center;
+}
+
+.how-we-work-header {
+    margin-bottom: 80px;
+}
+
+.how-we-work-header h2 {
+    font-family: var(--font-heading);
+    font-size: clamp(36px, 5vw, 48px);
+    font-weight: 700;
+    color: #4D1414;
+    /* Maroon color from image */
+    margin-bottom: 20px;
+}
+
+.how-we-work-header p {
+    font-size: 16px;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.how-we-work-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px 280px;
+    /* Increased horizontal gap */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.how-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 25px;
+    text-align: left;
+}
+
+.how-icon {
+    flex: 0 0 95px;
+    /* Slightly smaller to hit the sweet spot */
+}
+
+.how-icon img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.how-content h3 {
+    font-family: var(--font-heading);
+    font-size: 24px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 12px;
+}
+
+.how-content p {
+    font-size: 16px;
+    font-weight: 300;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* Responsive for How We Work */
+@media (max-width: 1024px) {
+    .how-we-work-grid {
+        gap: 60px 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .how-we-work {
+        padding: 80px 5%;
+    }
+
+    .how-we-work-grid {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+
+    .how-item {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 15px;
+    }
+
+    .how-icon {
+        flex: 0 0 80px;
+        width: 80px;
     }
 }
 
