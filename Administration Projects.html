@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Business Spaces - DEBO Architecture</title>
+    <title>Administration Projects - DEBO Architecture</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- Google Fonts -->
@@ -35,11 +35,11 @@
 
     <main>
         <!-- Hero Section -->
-        <section class="business-hero" style="background-image: url('imges/Frame\ 2147224986.png');">
+        <section class="business-hero" style="background-image: url('imges/Frame\ 2147224985.png');">
             <div class="business-hero-overlay"></div>
             <div class="business-hero-content">
-                <h1 class="reveal-business-hero"><span>Exterior</span> Identity</h1>
-                <p class="reveal-business-hero-sub">Striking facades that define the building’s character.</p>
+                <h1 class="reveal-business-hero"><span>Administration</span> Projects</h1>
+                <p class="reveal-business-hero-sub">Functional spaces built for efficiency and productivity</p>
             </div>
         </section>
 
@@ -50,87 +50,48 @@
                     <!-- Card 1 -->
                     <div class="business-card reveal-card-dark">
                         <div class="business-card-img">
-                            <img src="imges/Frame 2147224906 (5).png" alt="Urix Axis Mall Lounge Interior">
+                            <img src="imges/Frame 2147224906 (15).png" alt="Atricx Living">
                         </div>
                         <div class="business-card-info">
-                            <h3>Modern Art House Facade Design</h3>
-                            <p>Contemporary exterior blending textures, elegance, and bold identity</p>
-                            <a href="#" class="business-link">See All Photos</a>
+                            <h3>Atricx Living</h3>
+                            <p>Contemporary comfort shaped through clean lines and warmth</p>
+                            <a href="javascript:void(0)" class="business-link" onclick="openLightbox('atricx_living')">See All Photos</a>
                         </div>
                     </div>
                     <!-- Card 2 -->
                     <div class="business-card reveal-card-dark">
                         <div class="business-card-img">
-                            <img src="imges/Frame 2147224906 (4).png" alt="Nest & Nook Homewares">
+                            <img src="imges/Frame 2147224906 (14).png" alt="Pixels & Palette">
                         </div>
                         <div class="business-card-info">
-                            <h3> Mansoura Medical Center Commercial </h3>
-                            <p>Sleek glass design combining healthcare, retail, and lifestyle</p>
-                            <a href="#" class="business-link">See All Photos</a>
+                            <h3>Pixels &amp; Palette</h3>
+                            <p>Artful spaces blending color, texture, and visual storytelling</p>
+                            <a href="javascript:void(0)" class="business-link" onclick="openLightbox('pixels_palette')">See All Photos</a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="how-we-work">
-            <div class="process-container">
-                <div class="process-header">
-                    <h2 class="reveal-process-title">How We Work</h2>
-                    <p class="reveal-process-sub">A clear and efficient process designed to turn your vision into
-                        reality with precision and creativity.</p>
-                </div>
-
-                <div class="process-list">
-                    <!-- Step 1 -->
-                    <div class="process-item">
-                        <div class="process-icon">
-                            <img src="imges/Layer_25 (1).png" alt="Delivery">
+        <!-- Light Section -->
+        <section class="business-section-light">
+            <div class="business-container">
+                <div class="business-grid">
+                    <!-- Card 3 -->
+                    <div class="business-card reveal-card-light">
+                        <div class="business-card-img">
+                            <img src="imges/Frame 2147224906 (16).png" alt="AFS Financial Services">
                         </div>
-                        <div class="process-content">
-                            <h3>Consultation & Discovery</h3>
-                            <p>We understand your needs, goals, and design preferences.</p>
-                        </div>
-                    </div>
-
-                    <!-- Step 2 -->
-                    <div class="process-item">
-                        <div class="process-icon">
-                            <img src="imges/Layer_1 (3).png" alt="Consultation">
-
-                        </div>
-                        <div class="process-content">
-                            <h3>Concept & Planning</h3>
-                            <p>We develop creative concepts and detailed project plans.</p>
-                        </div>
-                    </div>
-
-                    <!-- Step 3 -->
-                    <div class="process-item">
-                        <div class="process-icon">
-                            <img src="imges/Layer_1 (4).png" alt="Planning">
-
-                        </div>
-                        <div class="process-content">
-                            <h3>Design Development</h3>
-                            <p>We refine the design with materials, layouts, and details.</p>
-                        </div>
-                    </div>
-
-                    <!-- Step 4 -->
-                    <div class="process-item">
-                        <div class="process-icon">
-                            <img src="imges/Layer_1 (5).png" alt="Development">
-
-                        </div>
-                        <div class="process-content">
-                            <h3>Execution & Delivery</h3>
-                            <p>We bring the design to life and deliver the final result.</p>
+                        <div class="business-card-info">
+                            <h3>AFS Financial Services</h3>
+                            <p>Smart financial solutions built for modern business needs</p>
+                            <a href="javascript:void(0)" class="business-link" onclick="openLightbox('afs_financial')">See All Photos</a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+
     </main>
 
     <footer>
@@ -185,7 +146,6 @@
         document.addEventListener('DOMContentLoaded', () => {
             gsap.registerPlugin(ScrollTrigger);
 
-            // Hero Animation
             gsap.from(".business-hero-overlay", {
                 opacity: 0,
                 duration: 1.5,
@@ -208,7 +168,6 @@
                 ease: "power3.out"
             });
 
-            // Card Reveal Dark
             gsap.from(".reveal-card-dark", {
                 scrollTrigger: {
                     trigger: ".business-section-dark",
@@ -221,7 +180,6 @@
                 ease: "power3.out"
             });
 
-            // Card Reveal Light
             gsap.from(".reveal-card-light", {
                 scrollTrigger: {
                     trigger: ".business-section-light",
@@ -233,6 +191,70 @@
                 stagger: 0.2,
                 ease: "power3.out"
             });
+        });
+    </script>
+
+    <!-- Lightbox Modal -->
+    <div id="lightboxModal" class="lightbox-modal">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <a class="lightbox-prev" onclick="changeSlide(-1)">&#10094;</a>
+        <div class="lightbox-content">
+            <img id="lightboxImage" src="" alt="Project Photo">
+        </div>
+        <a class="lightbox-next" onclick="changeSlide(1)">&#10095;</a>
+    </div>
+
+    <script>
+        const projectPhotos = {
+            'atricx_living': [
+                'imges/Frame 2147224906 (15).png',
+                'imges/Frame 2147224906 (14).png',
+                'imges/Frame 2147224906 (16).png'
+            ],
+            'pixels_palette': [
+                'imges/Frame 2147224906 (14).png',
+                'imges/Frame 2147224906 (15).png',
+                'imges/Frame 2147224906 (13).png'
+            ],
+            'afs_financial': [
+                'imges/Frame 2147224906 (16).png',
+                'imges/Frame 2147224906 (15).png',
+                'imges/Frame 2147224906 (14).png'
+            ]
+        };
+
+        let currentPhotos = [];
+        let currentIndex = 0;
+
+        function openLightbox(projectId) {
+            currentPhotos = projectPhotos[projectId] || [];
+            if (currentPhotos.length === 0) return;
+
+            currentIndex = 0;
+            document.getElementById('lightboxImage').src = currentPhotos[currentIndex];
+            document.getElementById('lightboxModal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightboxModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function changeSlide(direction) {
+            currentIndex += direction;
+            if (currentIndex >= currentPhotos.length) {
+                currentIndex = 0;
+            } else if (currentIndex < 0) {
+                currentIndex = currentPhotos.length - 1;
+            }
+            document.getElementById('lightboxImage').src = currentPhotos[currentIndex];
+        }
+
+        document.getElementById('lightboxModal').addEventListener('click', function (e) {
+            if (e.target === this) {
+                closeLightbox();
+            }
         });
     </script>
 </body>

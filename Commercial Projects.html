@@ -39,7 +39,7 @@
             <div class="business-hero-overlay"></div>
             <div class="business-hero-content">
                 <h1 class="reveal-business-hero"><span>Commercial</span> Projects</h1>
-                <p class="reveal-business-hero-sub">Designed to attract, engage, and perform.</p>
+                <p class="reveal-business-hero-sub">Designed to attract, engage, and perform..</p>
             </div>
         </section>
 
@@ -55,7 +55,7 @@
                         <div class="business-card-info">
                             <h3>Urix Axis Mall Lounge Interior</h3>
                             <p>Warm wooden textures meet modern comfort and elegance</p>
-                            <a href="#" class="business-link">See All Photos</a>
+                            <a href="javascript:void(0)" class="business-link" onclick="openLightbox('urix_axis')">See All Photos</a>
                         </div>
                     </div>
                     <!-- Card 2 -->
@@ -66,7 +66,7 @@
                         <div class="business-card-info">
                             <h3>Nest & Nook Homewares</h3>
                             <p>Curated essentials for cozy, timeless, stylish living spaces</p>
-                            <a href="#" class="business-link">See All Photos</a>
+                            <a href="javascript:void(0)" class="business-link" onclick="openLightbox('nest_nook')">See All Photos</a>
                         </div>
                     </div>
                 </div>
@@ -85,7 +85,7 @@
                         <div class="business-card-info">
                             <h3>Urix Axis Mall Lounge Interior</h3>
                             <p>Warm wooden textures meet modern comfort and elegance</p>
-                            <a href="#" class="business-link-dark">See All Photos</a>
+                            <a href="javascript:void(0)" class="business-link" onclick="openLightbox('urix_axis')">See All Photos</a>
                         </div>
                     </div>
                     <!-- Card 2 -->
@@ -96,7 +96,7 @@
                         <div class="business-card-info">
                             <h3>Nest & Nook Homewares</h3>
                             <p>Curated essentials for cozy, timeless, stylish living spaces</p>
-                            <a href="#" class="business-link-dark">See All Photos</a>
+                            <a href="javascript:void(0)" class="business-link" onclick="openLightbox('nest_nook')">See All Photos</a>
                         </div>
                     </div>
                 </div>
@@ -115,7 +115,7 @@
                         <div class="business-card-info">
                             <h3>Qoya Axis Home</h3>
                             <p>Elegant interiors blending modern luxury with serene comfort</p>
-                            <a href="#" class="business-link">See All Photos</a>
+                            <a href="javascript:void(0)" class="business-link" onclick="openLightbox('qoya_axis')">See All Photos</a>
                         </div>
                     </div>
 
@@ -126,7 +126,7 @@
                         <div class="business-card-info">
                             <h3>Urix Le Marché Home</h3>
                             <p>Refined living with warm textures and contemporary elegance</p>
-                            <a href="#" class="business-link">See All Photos</a>
+                            <a href="javascript:void(0)" class="business-link" onclick="openLightbox('urix_le_marche')">See All Photos</a>
                         </div>
                     </div>
                 </div>
@@ -143,7 +143,7 @@
                         <div class="business-card-info">
                             <h3>Ebano Home</h3>
                             <p>Natural elegance crafted through textures, tones, and timeless design</p>
-                            <a href="#" class="business-link-dark">See All Photos</a>
+                            <a href="javascript:void(0)" class="business-link" onclick="openLightbox('ebano_home')">See All Photos</a>
                         </div>
                     </div>
                     <!-- Card 2 -->
@@ -154,7 +154,7 @@
                         <div class="business-card-info">
                             <h3>Hearth & Crust Bakery</h3>
                             <p>Freshly baked delights crafted with warmth and tradition</p>
-                            <a href="#" class="business-link-dark">See All Photos</a>
+                            <a href="javascript:void(0)" class="business-link" onclick="openLightbox('hearth_crust')">See All Photos</a>
                         </div>
                     </div>
                 </div>
@@ -183,12 +183,13 @@
                         <div class="business-card-info">
                             <h3>Optics</h3>
                             <p>Vision meets style through modern, elegant eyewear design</p>
-                            <a href="#" class="business-link">See All Photos</a>
+                            <a href="javascript:void(0)" class="business-link" onclick="openLightbox('optics')">See All Photos</a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+
     </main>
 
     <footer>
@@ -291,6 +292,61 @@
                 stagger: 0.2,
                 ease: "power3.out"
             });
+        });
+    </script>
+    <!-- Lightbox Modal -->
+    <div id="lightboxModal" class="lightbox-modal">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <a class="lightbox-prev" onclick="changeSlide(-1)">&#10094;</a>
+        <div class="lightbox-content">
+            <img id="lightboxImage" src="" alt="Project Photo">
+        </div>
+        <a class="lightbox-next" onclick="changeSlide(1)">&#10095;</a>
+    </div>
+
+    <script>
+        const projectPhotos = {
+            'urix_axis': ['imges/Frame 2147224906 (8).png', 'imges/Frame 2147224906 (1).png', 'imges/Frame 2147224906 (2).png'],
+            'nest_nook': ['imges/Frame 2147224906 (7).png', 'imges/Frame 2147224906 (3).png', 'imges/Frame 2147224906 (4).png'],
+            'qoya_axis': ['imges/Frame 2147224906 (10).png', 'imges/Frame 2147224906 (14).png', 'imges/Frame 2147224906 (15).png'],
+            'urix_le_marche': ['imges/Frame 2147224906 (9).png', 'imges/Frame 2147224906 (16).png', 'imges/Frame 2147224906.png'],
+            'ebano_home': ['imges/Frame 2147224906 (12).png', 'imges/Frame 2147224906 (11).png', 'imges/Frame 2147224906 (6).png'],
+            'hearth_crust': ['imges/Frame 2147224906 (11).png', 'imges/Frame 2147224906 (12).png', 'imges/Frame 2147224906 (13).png'],
+            'optics': ['imges/Frame 2147224906 (13).png', 'imges/Frame 2147224906 (7).png', 'imges/Frame 2147224906 (8).png']
+        };
+
+        let currentPhotos = [];
+        let currentIndex = 0;
+
+        function openLightbox(projectId) {
+            currentPhotos = projectPhotos[projectId] || [];
+            if(currentPhotos.length === 0) return;
+            
+            currentIndex = 0;
+            document.getElementById('lightboxImage').src = currentPhotos[currentIndex];
+            document.getElementById('lightboxModal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightboxModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function changeSlide(direction) {
+            currentIndex += direction;
+            if (currentIndex >= currentPhotos.length) {
+                currentIndex = 0;
+            } else if (currentIndex < 0) {
+                currentIndex = currentPhotos.length - 1;
+            }
+            document.getElementById('lightboxImage').src = currentPhotos[currentIndex];
+        }
+
+        document.getElementById('lightboxModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeLightbox();
+            }
         });
     </script>
 </body>
