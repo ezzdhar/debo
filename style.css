@@ -32,7 +32,7 @@ header {
     top: 0;
     width: 100%;
     z-index: 1000;
-    padding: 20px 5%;
+    padding: 20px 2%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -43,6 +43,14 @@ header {
 .logo-container {
     display: flex;
     flex-direction: column;
+    max-width: 180px;
+}
+
+.logo-container img {
+    width: 100%;
+    height: auto;
+    max-height: 45px;
+    object-fit: contain;
 }
 
 .logo {
@@ -545,7 +553,7 @@ nav ul li a.active {
     }
 
     .project-img {
-        height: 350px;
+        height: 100%;
     }
 }
 
@@ -835,14 +843,15 @@ nav ul li a.active {
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    border: 1px solid #ccc;
-    background: transparent;
+    border: 1px solid #000;
+    background: #ffffff;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: all 0.3s ease;
-    color: #333;
+    color: #000000;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
 .ctrl-btn svg {
@@ -850,13 +859,16 @@ nav ul li a.active {
     height: 24px;
     fill: none;
     stroke: currentColor;
-    stroke-width: 2;
+    stroke-width: 2.5;
 }
 
 .ctrl-btn.active,
 .ctrl-btn:hover {
-    background: #000;
-    border-color: #000;
+    background: #000000;
+    color: #ffffff;
+    border-color: #000000;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
 .testimonial-image img {
@@ -1912,11 +1924,19 @@ footer {
 .projects-hero {
     position: relative;
     width: 100%;
-    min-height: 100vh;
+    min-height: auto;
+    height: 80vh;
     background-color: #000;
     display: flex;
     align-items: center;
     overflow: hidden;
+}
+
+@media (max-width: 790px) {
+    .projects-hero {
+        height: 60vh;
+        min-height: 350px;
+    }
 }
 
 .projects-hero-container {
@@ -1930,7 +1950,8 @@ footer {
 
 .reveal-hero-img {
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover;
     display: block;
 }
 
@@ -2042,7 +2063,7 @@ footer {
 @media (max-width: 991px) {
     .projects-main-grid {
         grid-template-columns: 1fr;
-        gap: 80px;
+        gap: 60px;
     }
 
     .title-header h2 {
@@ -2051,6 +2072,52 @@ footer {
 
     .projects-title-section {
         background-size: 50% 100%;
+    }
+}
+
+@media (max-width: 790px) {
+    .projects-showcase {
+        padding: 60px 5%;
+    }
+
+    .section-header-portfolio h2 {
+        font-size: 28px;
+    }
+
+    .section-header-portfolio h2 span {
+        font-size: 40px;
+    }
+
+    .project-item {
+        height: 350px;
+    }
+
+    .project-info-overlay {
+        padding: 20px;
+    }
+
+    .project-info-overlay h3 {
+        font-size: 18px;
+        margin-bottom: 5px;
+    }
+
+    .project-info-overlay p {
+        font-size: 13px;
+        line-height: 1.4;
+    }
+}
+
+@media (max-width: 500px) {
+    .project-item {
+        height: 300px;
+    }
+
+    .project-info-overlay h3 {
+        font-size: 16px;
+    }
+
+    .project-info-overlay p {
+        font-size: 12px;
     }
 }
 
@@ -2267,19 +2334,18 @@ footer {
 
     /* Header / Navbar modifications for Mobile Side Menu */
     header {
-        padding: 15px 5%;
+        padding: 10px 3%;
         justify-content: space-between;
     }
 
     .logo-container {
-        margin-right: auto;
+        max-width: 130px;
     }
 
     .btn-consult {
-        display: inline-block;
-        padding: 8px 15px;
-        font-size: 12px;
-        margin-right: 15px;
+        padding: 8px 12px;
+        font-size: 11px;
+        margin-right: 10px;
     }
 
     /* Hamburger Icon */
@@ -2670,121 +2736,84 @@ footer {
     }
 }
 
-/* Maintain Horizontal Sections (No Columns) - Force Desktop Layout with Zoom Scaling */
+/* Maintain Horizontal Sections (No Columns) - Improved Responsiveness */
 @media (max-width: 1400px) {
-
     .innovation-section,
     .about,
     .testimonials {
-        overflow-x: auto;
-        overflow-y: visible;
-        scrollbar-width: thin;
-        scrollbar-color: var(--primary-color) transparent;
-        padding-bottom: 20px !important;
+        padding-left: 5%;
+        padding-right: 5%;
+        overflow: hidden; /* Remove horizontal scroll */
     }
 
-    .innovation-container,
     .about-container,
-    .testimonial-slider-container {
-        flex-direction: row !important;
-        flex-wrap: nowrap !important;
+    .innovation-container {
+        flex-direction: column !important;
         align-items: center !important;
-        justify-content: flex-start !important;
-        /* Allow scroll if oversized */
-        width: 1200px !important;
-        /* Force width to allow scroll instead of squeeze */
-        margin: 0 auto;
+        text-align: center !important;
+        width: 100% !important;
     }
 
-    .about-content {
-        flex: 0 0 600px !important;
+    .about-content,
+    .innovation-content {
+        flex: 0 0 auto !important;
+        width: 100% !important;
+        margin: 0 0 40px 0 !important;
+    }
+
+    .about-visual,
+    .innovation-visuals {
+        flex: 0 0 auto !important;
+        width: 100% !important;
         margin: 0 !important;
     }
 
-    .about-visual {
-        flex: 0 0 550px !important;
-        margin-left: 50px !important;
-        margin-top: 0 !important;
+    .testimonial-slider-container {
+        width: 100% !important;
+        height: auto !important;
+        min-height: 450px;
     }
 
     .testimonial-slide {
-        flex: 0 0 1200px !important;
-        margin: 0 !important;
+        width: 100% !important;
+        padding: 0 20px !important;
     }
 
-    .innovation-visuals {
-        flex: 0 0 550px !important;
-        margin: 0 !important;
-        padding-left: 20px !important;
-    }
-
-    .innovation-content {
-        flex: 0 0 800px !important;
-        margin-left: -100px !important;
-        margin-top: 0 !important;
+    .testimonial-glass-box {
+        width: 100% !important;
+        padding: 40px 30px !important;
     }
 }
 
-@media (max-width: 1300px) {
+@media (max-width: 500px) {
+    .testimonial-title {
+        font-size: 32px;
+    }
 
-    .innovation-container,
-    .about-container,
     .testimonial-slider-container {
-        zoom: 0.95;
+        min-height: 500px;
     }
-}
 
-@media (max-width: 1100px) {
-
-    .innovation-container,
-    .about-container,
-    .testimonial-slider-container {
-        zoom: 0.85;
+    .testimonial-glass-box {
+        padding: 30px 20px !important;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
     }
-}
 
-@media (max-width: 900px) {
-
-    .innovation-container,
-    .about-container,
-    .testimonial-slider-container {
-        zoom: 0.75;
+    .testimonial-text {
+        font-size: 14px;
+        line-height: 1.6;
     }
-}
 
-@media (max-width: 768px) {
-
-    .innovation-container,
-    .about-container,
-    .testimonial-slider-container {
-        zoom: 0.65;
+    .testimonial-controls {
+        margin-top: 30px;
+        gap: 15px;
     }
-}
 
-@media (max-width: 600px) {
-
-    .innovation-container,
-    .about-container,
-    .testimonial-container {
-        zoom: 0.55;
-    }
-}
-
-@media (max-width: 450px) {
-
-    .innovation-container,
-    .about-container,
-    .testimonial-container {
-        zoom: 0.5;
-    }
-}
-
-@media (max-width: 350px) {
-
-    .innovation-container,
-    .about-container,
-    .testimonial-container {
-        zoom: 0.45;
+    .ctrl-btn {
+        width: 50px;
+        height: 50px;
     }
 }
 
@@ -2801,9 +2830,9 @@ footer {
     text-align: center;
     padding: 0 5%;
     background-image: url('imges/Frame 2147224985 (1).png');
-    background-size: 100% 100%;
+    background-size: cover;
     background-position: center;
-    background-attachment: fixed;
+    background-attachment: scroll;
     overflow: hidden;
 }
 
@@ -2889,6 +2918,13 @@ footer {
     margin-bottom: 60px;
 }
 
+.info-list a {
+    color: #C0C0C0;
+    font-weight: 300;
+    font-size: 24px;
+    text-decoration: none;
+}
+
 .info-item {
     display: flex;
     align-items: center;
@@ -2961,6 +2997,45 @@ footer {
     }
 }
 
+@media (max-width: 780px) {
+    .contact-info-section {
+        padding: 80px 5%;
+        min-height: auto;
+        display: block;
+    }
+
+    .contact-info-section::after {
+        background-position: bottom center;
+        background-size: contain;
+        opacity: 0.3;
+        height: 50%;
+        bottom: 0;
+        top: auto;
+    }
+
+    .contact-info-content h2 {
+        font-size: 32px;
+        margin-bottom: 40px;
+    }
+
+    .info-list a {
+        font-size: 18px;
+    }
+
+    .info-item {
+        gap: 12px;
+    }
+
+    .info-icon {
+        width: 24px;
+        height: 24px;
+    }
+
+    .info-text {
+        font-size: 16px;
+    }
+}
+
 @media (max-width: 768px) {
     .contact-hero {
         padding: 0 5%;
@@ -2973,28 +3048,6 @@ footer {
 
     .contact-hero p {
         font-size: 18px;
-    }
-
-    .contact-info-section {
-        padding: 80px 5%;
-    }
-
-    .contact-info-content h2 {
-        font-size: 36px;
-        margin-bottom: 40px;
-    }
-
-    .info-text {
-        font-size: 16px;
-    }
-
-    .info-item {
-        gap: 12px;
-    }
-
-    .info-icon {
-        width: 26px;
-        height: 26px;
     }
 }
 
@@ -3027,7 +3080,7 @@ footer {
     background-image: url('imges/Frame 2147225061.png');
     background-size: cover;
     background-position: top center;
-    background-attachment: fixed;
+    background-attachment: scroll;
     overflow: hidden;
 }
 

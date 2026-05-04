@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Get Consultation | DEBO Architecture</title>
+    <title>DEBO</title>
+    <link rel="icon" href="imges/logobig.png">
     <link rel="stylesheet" href="style.css">
     <!-- GSAP for Professional Animations -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -34,36 +35,37 @@
             <div class="consultation-hero-overlay"></div>
             <div class="hero-content">
                 <h1 class="reveal-text">Request <span>a Consultation</span></h1>
-                <p class="reveal-text-sub">Share your details and project needs, and our team will get in touch to bring your vision to life</p>
+                <p class="reveal-text-sub">Share your details and project needs, and our team will get in touch to bring
+                    your vision to life</p>
             </div>
         </section>
-        
+
         <!-- Consultation Form Section -->
         <section class="consultation-form-section">
             <div class="form-container fade-in">
-                <form action="#" class="consultation-form">
+                <form action="https://formspree.io/f/info@deboarchitecture.com" method="POST" class="consultation-form" id="consultationForm">
                     <div class="form-row">
                         <div class="input-group">
                             <label for="fname">F - Name</label>
-                            <input type="text" id="fname" placeholder="F - Name" required>
+                            <input type="text" id="fname" name="first_name" placeholder="F - Name" required>
                         </div>
                         <div class="input-group">
                             <label for="lname">L - Name</label>
-                            <input type="text" id="lname" placeholder="L - Name" required>
+                            <input type="text" id="lname" name="last_name" placeholder="L - Name" required>
                         </div>
                     </div>
                     <div class="input-group">
                         <label for="phone">Phone Number</label>
-                        <input type="tel" id="phone" placeholder="Phone Number" required>
+                        <input type="tel" id="phone" name="phone" placeholder="Phone Number" required>
                     </div>
                     <div class="input-group">
                         <label for="email">Email Address</label>
-                        <input type="email" id="email" placeholder="Email Address" required>
+                        <input type="email" id="email" name="email" placeholder="Email Address" required>
                     </div>
                     <div class="input-group">
                         <label for="service">Service Type</label>
                         <div class="select-wrapper">
-                            <select id="service" required>
+                            <select id="service" name="service_type" required>
                                 <option value="" disabled selected hidden>Service Type</option>
                                 <option value="commercial">Commercial</option>
                                 <option value="residential">Residential</option>
@@ -73,9 +75,10 @@
                     </div>
                     <div class="input-group">
                         <label for="message">Project Detail</label>
-                        <textarea id="message" rows="5" placeholder="Project Detail" required></textarea>
+                        <textarea id="message" name="project_details" rows="5" placeholder="Project Detail" required></textarea>
                     </div>
-                    <button type="submit" class="btn-submit">Start Your Project Now</button>
+                    <button type="submit" class="btn-submit" id="submitBtn">Start Your Project Now</button>
+                    <div id="formStatus" style="margin-top: 15px; text-align: center; display: none; font-size: 14px;"></div>
                 </form>
             </div>
         </section>
@@ -89,43 +92,63 @@
                     <p>We design spaces that inspire modern living and reflect your unique vision. Blending creativity
                         with functionality, we deliver elegant and timeless interior solutions.</p>
                 </div>
-                <div class="footer-column">
-                    <h3>Get In Touch</h3>
-                    <ul class="contact-info">
-                        <li><img src="imges/mdi-light_email.png" alt=""> info@webexample.com</li>
-                        <li><img src="imges/mdi-light_phone.png" alt=""> +20 123 456 7890</li>
-                        <li><img src="imges/Text input.png" alt="" style="width:16px"> Cairo, Egypt, New Damietta
-                        </li>
-                    </ul>
-                </div>
+
                 <div class="footer-column">
                     <h3>Quick Links</h3>
                     <ul>
                         <li><a href="index.html">Home</a></li>
                         <li><a href="about.html">About Us</a></li>
                         <li><a href="ourservice.html">Our Services</a></li>
-                        <li><a href="#">Our Projects</a></li>
+                        <li><a href="projects.html">Our Projects</a></li>
                         <li><a href="contact.html">Contact Us</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
                     <h3>Our Services</h3>
                     <ul>
-                        <li><a href="ExteriorIdentity.html">Exterior Identity</a></li>
-                        <li><a href="business.html">Business Spaces</a></li>
-                        <li><a href="workenvironments.html">Work Environments</a></li>
-                        <li><a href="Living.html">Living Spaces</a></li>
+                        <li><a href="FacadeProjects.html">Facade Projects</a></li>
+                        <li><a href="CommercialProjects.html">Commercial Projects</a></li>
+                        <li><a href="AdministratioProjects.html">Administration Projects</a></li>
+                        <li><a href="ResidentialProjects.html">Residential Projects</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Get In Touch</h3>
+                    <ul class="contact-info">
+                        <li>
+                            <img src="imges/mdi-light_email.png" alt="">
+                            <a href="mailto:info@deboarchitecture.com">
+                                info@deboarchitecture.com
+                            </a>
+                        </li>
+
+                        <li>
+                            <img src="imges/mdi-light_phone.png" alt="">
+                            <a href="tel:+20100030872">
+                                +20 100 030 872
+                            </a>
+                        </li>
+
+                        <li>
+                            <img src="imges/Text input.png" alt="" style="width:16px">
+                            <a href="https://www.google.com/maps?q=New+Damietta,+Central+Area" target="_blank">
+                                New Damietta, Central Area
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
-
             <div class="footer-bottom">
                 <p>&copy; 2026 DEBO. All Rights Reserved.</p>
                 <div class="social-links">
-                    <a href="#"><img src="imges/Group (6).png" alt="Facebook"></a>
-                    <a href="#"><img src="imges/Group (7).png" alt="Instagram"></a>
-                    <a href="#"><img src="imges/Group (8).png" alt="WhatsApp"></a>
-                    <a href="#"><img src="imges/Group (9).png" alt="YouTube"></a>
+                    <a href="https://www.facebook.com/DEBO.Architecture" target="_blank"><img src="imges/Group (6).png"
+                            alt="Facebook"></a>
+                    <a href="https://www.instagram.com/deboarchitecture" target="_blank"><img src="imges/Group (7).png"
+                            alt="Instagram"></a>
+                    <a href="https://api.whatsapp.com/send?phone=0100030872" target="_blank"><img
+                            src="imges/Group (8).png" alt="WhatsApp"></a>
+                    <a href="https://www.youtube.com/@deboinnovationsdesigns2560" target="_blank"><img
+                            src="imges/Group (9).png" alt="YouTube"></a>
                 </div>
             </div>
         </div>
@@ -153,6 +176,58 @@
                 delay: 0.5,
                 ease: 'power3.out'
             });
+
+            // Form Submission Handler
+            const form = document.getElementById('consultationForm');
+            const status = document.getElementById('formStatus');
+            const submitBtn = document.getElementById('submitBtn');
+
+            if (form) {
+                form.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    
+                    // Show loading state
+                    submitBtn.disabled = true;
+                    submitBtn.innerText = 'Sending...';
+                    status.style.display = 'block';
+                    status.style.color = '#a0a0a0';
+                    status.innerText = 'Preparing your request...';
+
+                    const formData = new FormData(form);
+                    
+                    try {
+                        const response = await fetch(form.action, {
+                            method: form.method,
+                            body: formData,
+                            headers: {
+                                'Accept': 'application/json'
+                            }
+                        });
+
+                        if (response.ok) {
+                            status.style.color = '#4BB543'; // Green
+                            status.innerText = 'Thank you! Your message has been sent successfully.';
+                            form.reset();
+                            submitBtn.innerText = 'Sent Successfully';
+                        } else {
+                            const data = await response.json();
+                            if (Object.hasOwn(data, 'errors')) {
+                                status.innerText = data["errors"].map(error => error["message"]).join(", ");
+                            } else {
+                                status.innerText = "Oops! There was a problem submitting your form";
+                            }
+                            status.style.color = '#ff4d4d';
+                            submitBtn.disabled = false;
+                            submitBtn.innerText = 'Start Your Project Now';
+                        }
+                    } catch (error) {
+                        status.style.color = '#ff4d4d';
+                        status.innerText = "Oops! Network error, please try again later.";
+                        submitBtn.disabled = false;
+                        submitBtn.innerText = 'Start Your Project Now';
+                    }
+                });
+            }
         });
     </script>
 </body>
