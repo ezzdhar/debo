@@ -441,6 +441,9 @@ nav ul li a.active {
     height: 600px;
     border-radius: 4px;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    display: block;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 .project-item::before {
