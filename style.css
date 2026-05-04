@@ -2996,3 +2996,237 @@ footer {
         font-size: 14px;
     }
 }
+
+/* -------------------------------------------------------------------------- */
+/*                     Consultation Page Specific Styles                      */
+/* -------------------------------------------------------------------------- */
+
+.consultation-page {
+    background-color: #000;
+}
+
+.consultation-hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: left;
+    padding: 0 10%;
+    background-image: url('imges/Frame 2147225061.png');
+    background-size: cover;
+    background-position: top center;
+    background-attachment: fixed;
+    overflow: hidden;
+}
+
+.consultation-hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.consultation-hero .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 1110px
+}
+
+.consultation-hero h1 {
+    font-family: var(--font-heading);
+    font-size: 85px;
+    font-weight: 700;
+    color: var(--text-white);
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+
+.consultation-hero h1 span {
+    font-weight: 600;
+    font-size: 50px;
+}
+
+.consultation-hero p {
+    font-family: var(--font-body);
+    font-size: 19px;
+    color: var(--text-white);
+    letter-spacing: 0.5px;
+    font-weight: 300;
+    max-width: 900px;
+}
+
+/* Responsive for Consultation Page */
+@media (max-width: 1200px) {
+    .consultation-hero h1 {
+        font-size: 70px;
+    }
+}
+
+@media (max-width: 991px) {
+    .consultation-hero h1 {
+        font-size: 60px;
+    }
+
+    .consultation-hero p {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .consultation-hero {
+        padding: 0 5%;
+        height: 80vh;
+    }
+
+    .consultation-hero h1 {
+        font-size: 48px;
+    }
+
+    .consultation-hero p {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .consultation-hero h1 {
+        font-size: 38px;
+    }
+
+    .consultation-hero p {
+        font-size: 15px;
+    }
+}
+
+/* Consultation Form Section */
+.consultation-form-section {
+    padding: 100px 10%;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.form-container {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 850px;
+    padding: 40px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('imges/Group 6356167.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.consultation-form {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.form-row {
+    display: flex;
+    gap: 30px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.input-group label {
+    font-family: var(--font-body);
+    font-size: 16px;
+    color: var(--text-white);
+    margin-bottom: 8px;
+    font-weight: 400;
+}
+
+.input-group input,
+.input-group select,
+.input-group textarea {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 3px;
+    padding: 16px 18px;
+    color: #a0a0a0;
+    font-family: var(--font-body);
+    font-size: 14px;
+    transition: var(--transition-smooth);
+}
+
+.input-group input::placeholder,
+.input-group textarea::placeholder {
+    color: #666;
+}
+
+.input-group input:focus,
+.input-group select:focus,
+.input-group textarea:focus {
+    outline: none;
+    border-color: #54080C;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.select-wrapper {
+    position: relative;
+}
+
+.select-wrapper::after {
+    content: '▼';
+    font-size: 10px;
+    color: #888;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+.input-group select {
+    width: 100%;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    color: #888;
+}
+
+.input-group select option {
+    background: #111;
+    color: #fff;
+}
+
+.btn-submit {
+    background-color: #54080C;
+    color: #fff;
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 500;
+    padding: 18px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    margin-top: 10px;
+    width: 100%;
+}
+
+.btn-submit:hover {
+    background-color: #7a0b12;
+}
+
+/* Responsive Form */
+@media (max-width: 768px) {
+    .form-row {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .form-container {
+        padding: 40px 20px;
+    }
+}

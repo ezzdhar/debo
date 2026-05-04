@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us | DEBO Architecture</title>
+    <title>Get Consultation | DEBO Architecture</title>
     <link rel="stylesheet" href="style.css">
     <!-- GSAP for Professional Animations -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
 
-<body class="contact-page">
+<body class="consultation-page">
 
     <header>
         <div class="logo-container">
@@ -23,71 +23,60 @@
                 <li><a href="about.html">About Us</a></li>
                 <li><a href="ourservice.html">Our Services</a></li>
                 <li><a href="projects.html">Portfolio</a></li>
-                <li><a href="contact.html" class="active">Contact Us</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
             </ul>
         </nav>
         <a href="getconsultation.html" class="btn-consult">Get Consultation</a>
     </header>
 
     <main>
-        <section class="contact-hero">
-            <div class="contact-hero-overlay"></div>
+        <section class="consultation-hero">
+            <div class="consultation-hero-overlay"></div>
             <div class="hero-content">
-                <h1 class="reveal-text">Contact <span>Us</span></h1>
-                <p class="reveal-text-sub">Designed to attract, engage, and perform.</p>
+                <h1 class="reveal-text">Request <span>a Consultation</span></h1>
+                <p class="reveal-text-sub">Share your details and project needs, and our team will get in touch to bring your vision to life</p>
             </div>
         </section>
-
-        <section class="contact-info-section">
-            <div class="contact-info-container">
-                <div class="contact-info-content">
-                    <h2 class="fade-in">Contact Info</h2>
-                    
-                    <div class="info-list">
-                        <div class="info-item">
-                            <div class="info-icon">
-                                <img src="imges/mdi-light_phone (1).png" alt="Phone">
-                            </div>
-                            <div class="info-text">
-                                <span>Phone : </span> 010-123-456-34
-                            </div>
+        
+        <!-- Consultation Form Section -->
+        <section class="consultation-form-section">
+            <div class="form-container fade-in">
+                <form action="#" class="consultation-form">
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label for="fname">F - Name</label>
+                            <input type="text" id="fname" placeholder="F - Name" required>
                         </div>
-
-                        <div class="info-item">
-                            <div class="info-icon">
-                                <img src="imges/mdi-light_phone (2).png" alt="Message">
-                            </div>
-                            <div class="info-text">
-                                <span>Message : </span> Support @ gmail.com
-                            </div>
-                        </div>
-
-                        <div class="info-item">
-                            <div class="info-icon">
-                                <img src="imges/mdi-light_phone (3).png" alt="Address">
-                            </div>
-                            <div class="info-text">
-                                <span>Address : </span> New Damietta, Almahgob st
-                            </div>
-                        </div>
-
-                        <div class="info-item">
-                            <div class="info-icon">
-                                <img src="imges/mdi-light_phone (4).png" alt="Open">
-                            </div>
-                            <div class="info-text">
-                                <span>Open : </span> Mon-Friday | 9:00 AM - 6:00 PM
-                            </div>
+                        <div class="input-group">
+                            <label for="lname">L - Name</label>
+                            <input type="text" id="lname" placeholder="L - Name" required>
                         </div>
                     </div>
-
-                    <div class="social-links-contact fade-in">
-                        <a href="#"><img src="imges/Group (6).png" alt="Facebook"></a>
-                        <a href="#"><img src="imges/Group (7).png" alt="TikTok"></a>
-                        <a href="#"><img src="imges/Group (8).png" alt="WhatsApp"></a>
-                        <a href="#"><img src="imges/Group (9).png" alt="YouTube"></a>
+                    <div class="input-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" placeholder="Phone Number" required>
                     </div>
-                </div>
+                    <div class="input-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" placeholder="Email Address" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="service">Service Type</label>
+                        <div class="select-wrapper">
+                            <select id="service" required>
+                                <option value="" disabled selected hidden>Service Type</option>
+                                <option value="commercial">Commercial</option>
+                                <option value="residential">Residential</option>
+                                <option value="industrial">Industrial</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label for="message">Project Detail</label>
+                        <textarea id="message" rows="5" placeholder="Project Detail" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Start Your Project Now</button>
+                </form>
             </div>
         </section>
     </main>
@@ -144,7 +133,7 @@
 
     <script src="main.js"></script>
     <script>
-        // Professional Animations for Contact Page
+        // Professional Animations
         document.addEventListener('DOMContentLoaded', () => {
             gsap.registerPlugin(ScrollTrigger);
 
@@ -163,33 +152,6 @@
                 duration: 1,
                 delay: 0.5,
                 ease: 'power3.out'
-            });
-
-            // Fade in elements on scroll
-            gsap.utils.toArray('.fade-in').forEach(el => {
-                gsap.from(el, {
-                    scrollTrigger: {
-                        trigger: el,
-                        start: 'top 85%',
-                    },
-                    y: 40,
-                    opacity: 0,
-                    duration: 1,
-                    ease: 'power2.out'
-                });
-            });
-
-            // Info items staggered animation
-            gsap.from('.info-item', {
-                scrollTrigger: {
-                    trigger: '.info-list',
-                    start: 'top 80%',
-                },
-                x: -50,
-                opacity: 0,
-                duration: 0.8,
-                stagger: 0.2,
-                ease: 'power2.out'
             });
         });
     </script>
