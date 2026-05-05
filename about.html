@@ -313,26 +313,46 @@
 
             // Mission & Vision Section Animations
             if (document.querySelector(".about-mv")) {
-                gsap.from(".mission-col", {
-                    scrollTrigger: {
-                        trigger: ".about-mv",
-                        start: "top 80%",
-                    },
-                    x: -100,
-                    opacity: 0,
-                    duration: 1.2,
-                    ease: "power3.out"
+                let mm = gsap.matchMedia();
+
+                mm.add("(min-width: 769px)", () => {
+                    // Desktop Animations (Side Slide)
+                    gsap.from(".mission-col", {
+                        scrollTrigger: {
+                            trigger: ".about-mv",
+                            start: "top 80%",
+                        },
+                        x: -100,
+                        opacity: 0,
+                        duration: 1.2,
+                        ease: "power3.out"
+                    });
+
+                    gsap.from(".vision-col", {
+                        scrollTrigger: {
+                            trigger: ".about-mv",
+                            start: "top 80%",
+                        },
+                        x: 100,
+                        opacity: 0,
+                        duration: 1.2,
+                        ease: "power3.out"
+                    });
                 });
 
-                gsap.from(".vision-col", {
-                    scrollTrigger: {
-                        trigger: ".about-mv",
-                        start: "top 80%",
-                    },
-                    x: 100,
-                    opacity: 0,
-                    duration: 1.2,
-                    ease: "power3.out"
+                mm.add("(max-width: 768px)", () => {
+                    // Mobile Animations (Vertical Fade)
+                    gsap.from(".mission-col, .vision-col", {
+                        scrollTrigger: {
+                            trigger: ".about-mv",
+                            start: "top 85%",
+                        },
+                        y: 50,
+                        opacity: 0,
+                        duration: 1,
+                        stagger: 0.3,
+                        ease: "power2.out"
+                    });
                 });
 
                 gsap.from(".image-col", {
@@ -340,7 +360,7 @@
                         trigger: ".about-mv",
                         start: "top 70%",
                     },
-                    scale: 0.8,
+                    scale: 0.9,
                     opacity: 0,
                     duration: 1.5,
                     ease: "expo.out"

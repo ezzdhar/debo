@@ -1058,6 +1058,11 @@ footer {
         gap: 30px;
     }
 
+    .footer-column h3::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
     .footer-column p {
         margin: 0 auto;
     }
@@ -1759,7 +1764,7 @@ footer {
 
 .mv-grid {
     display: grid;
-    grid-template-columns: 1fr 400px 1fr;
+    grid-template-columns: 1fr 380px 1fr;
     min-height: 550px;
     align-items: stretch;
 }
@@ -1843,9 +1848,8 @@ footer {
 
 .image-col img {
     height: 100%;
-    width: auto;
-    max-width: 100%;
-    object-fit: contain;
+    width: 100%;
+    object-fit: cover;
     display: block;
 }
 
@@ -1888,16 +1892,15 @@ footer {
         border: none;
     }
 
-    .image-col {
-        height: 350px;
-        width: 100%;
-        margin: 20px 0;
-        border-radius: 12px;
-        order: 2;
-    }
-
     .mission-col {
         order: 1;
+    }
+
+    .image-col {
+        height: auto;
+        width: 100%;
+        margin: 0;
+        order: 2;
     }
 
     .vision-col {
@@ -1906,7 +1909,8 @@ footer {
 
     .image-col img {
         width: 100%;
-        height: 100%;
+        height: auto;
+        min-height: 250px;
         object-fit: cover;
         transition: transform 0.5s ease;
     }
