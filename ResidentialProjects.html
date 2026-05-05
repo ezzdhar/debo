@@ -208,6 +208,10 @@
                     </ul>
                 </div>
             </div>
+            <!-- Separate Footer Logo -->
+            <div class="footer-logo">
+                <img src="imges/WhatsApp Image 2l026-04-12 at 4.01.54 PM 1 (3).png" alt="DEBO Logo">
+            </div>
             <div class="footer-bottom">
                 <p>&copy; 2026 DEBO. All Rights Reserved.</p>
                 <div class="social-links">
@@ -215,7 +219,7 @@
                             alt="Facebook"></a>
                     <a href="https://www.instagram.com/deboarchitecture" target="_blank"><img src="imges/Group (7).png"
                             alt="Instagram"></a>
-                    <a href="https://api.whatsapp.com/send?phone=0100030872" target="_blank"><img
+                    <a href="https://api.whatsapp.com/send?phone=+20100030872" target="_blank"><img
                             src="imges/Group (8).png" alt="WhatsApp"></a>
                     <a href="https://www.youtube.com/@deboinnovationsdesigns2560" target="_blank"><img
                             src="imges/Group (9).png" alt="YouTube"></a>
@@ -280,6 +284,7 @@
     </script>
     <!-- Lightbox Modal -->
     <div id="lightboxModal" class="lightbox-modal">
+        <div id="lightboxLoader" class="lightbox-loader"></div>
         <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
         <a class="lightbox-prev" onclick="changeSlide(-1)">&#10094;</a>
         <div class="lightbox-content">
@@ -307,9 +312,11 @@
             if (currentPhotos.length === 0) return;
 
             currentIndex = 0;
-            document.getElementById('lightboxImage').src = currentPhotos[currentIndex];
+            const img = document.getElementById('lightboxImage');
+            img.src = currentPhotos[currentIndex];
             document.getElementById('lightboxModal').style.display = 'flex';
             document.body.style.overflow = 'hidden';
+            preloadNext();
         }
 
         function closeLightbox() {
@@ -317,14 +324,41 @@
             document.body.style.overflow = 'auto';
         }
 
+        function preloadNext() {
+            if (currentPhotos.length <= 1) return;
+            const nextIdx = (currentIndex + 1) % currentPhotos.length;
+            const prevIdx = (currentIndex - 1 + currentPhotos.length) % currentPhotos.length;
+            new Image().src = currentPhotos[nextIdx];
+            new Image().src = currentPhotos[prevIdx];
+        }
+
         function changeSlide(direction) {
+            const img = document.getElementById('lightboxImage');
+            const loader = document.getElementById('lightboxLoader');
+            
             currentIndex += direction;
-            if (currentIndex >= currentPhotos.length) {
-                currentIndex = 0;
-            } else if (currentIndex < 0) {
-                currentIndex = currentPhotos.length - 1;
+            if (currentIndex >= currentPhotos.length) currentIndex = 0;
+            else if (currentIndex < 0) currentIndex = currentPhotos.length - 1;
+            
+            // Smoother transition
+            img.style.opacity = '0.4';
+            if (loader) loader.style.display = 'block';
+
+            const tempImg = new Image();
+            tempImg.src = currentPhotos[currentIndex];
+            tempImg.onload = () => {
+                img.src = currentPhotos[currentIndex];
+                img.style.opacity = '1';
+                if (loader) loader.style.display = 'none';
+                preloadNext();
+            };
+            
+            // Fallback for cached images or quick loads
+            if (tempImg.complete) {
+                img.src = currentPhotos[currentIndex];
+                img.style.opacity = '1';
+                if (loader) loader.style.display = 'none';
             }
-            document.getElementById('lightboxImage').src = currentPhotos[currentIndex];
         }
 
         document.getElementById('lightboxModal').addEventListener('click', function (e) {
@@ -333,6 +367,7 @@
             }
         });
     </script>
+    <script src="main.js"></script>
 </body>
 
 </html>

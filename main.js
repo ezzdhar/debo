@@ -1,6 +1,39 @@
 // Register ScrollTrigger
 gsap.registerPlugin(ScrollTrigger);
 
+// Navbar visibility and styling logic
+const updateHeader = () => {
+    const header = document.querySelector('header');
+    if (!header) return;
+    const isMobile = window.innerWidth <= 991;
+    
+    // Force visibility to prevent issues with animations or initial state
+    header.style.opacity = '1';
+    header.style.visibility = 'visible';
+    header.style.display = 'flex';
+
+    if (window.scrollY > 50) {
+        header.style.padding = isMobile ? '10px 3%' : '15px 5%';
+        header.style.background = '#020202';
+        header.style.boxShadow = '0 5px 20px rgba(0,0,0,0.5)';
+    } else {
+        header.style.padding = isMobile ? '10px 3%' : '20px 5%';
+        header.style.background = '#020202';
+        header.style.boxShadow = 'none';
+    }
+};
+
+// Listeners for header
+window.addEventListener('scroll', updateHeader);
+window.addEventListener('load', updateHeader);
+window.addEventListener('resize', updateHeader);
+document.addEventListener('DOMContentLoaded', updateHeader);
+
+// Initialize all animations after full window load
+window.addEventListener('load', () => {
+    updateHeader(); // Run once more on load
+    ScrollTrigger.refresh();
+
 // Hero Entrance Animation
 gsap.from(".hero", {
     scale: 1.1,
@@ -186,7 +219,10 @@ const nextBtn = document.getElementById('next-test');
 
 function updateSlider(index, direction = 'next') {
     const currentSlide = document.querySelector('.testimonial-slide.active');
+    if (!currentSlide) return; // Guard clause
+    
     const glassBox = currentSlide.querySelector('.testimonial-glass-box');
+    if (!glassBox) return; // Guard clause
     
     // Determine entrance/exit offsets based on direction
     const exitX = direction === 'next' ? -40 : 40;
@@ -211,54 +247,69 @@ function updateSlider(index, direction = 'next') {
                 </div>
             `;
             const newGlassBox = currentSlide.querySelector('.testimonial-glass-box');
-            gsap.fromTo(newGlassBox, 
-                { opacity: 0, x: enterX, scale: 0.95 }, 
-                { opacity: 1, x: 0, scale: 1, duration: 0.7, ease: "power2.out" }
-            );
+            if (newGlassBox) {
+                gsap.fromTo(newGlassBox, 
+                    { opacity: 0, x: enterX, scale: 0.95 }, 
+                    { opacity: 1, x: 0, scale: 1, duration: 0.7, ease: "power2.out" }
+                );
+            }
         }
     });
 
     if(prevBtn && nextBtn) {
-        prevBtn.classList.toggle('active', index !== 0);
-        nextBtn.classList.toggle('active', index !== testimonialData.length - 1);
+        if (direction === 'next') {
+            nextBtn.classList.add('active');
+            prevBtn.classList.remove('active');
+        } else {
+            prevBtn.classList.add('active');
+            nextBtn.classList.remove('active');
+        }
     }
 }
 
 function nextTestimonial() {
-    currentIdx = (currentIdx + 1) % testimonialData.length;
-    updateSlider(currentIdx, 'next');
+    if (document.querySelector('.testimonial-slide.active')) {
+        currentIdx = (currentIdx + 1) % testimonialData.length;
+        updateSlider(currentIdx, 'next');
+    }
 }
 
 // Autoplay every 5 seconds
-let testimonialInterval = setInterval(nextTestimonial, 5000);
+let testimonialInterval;
+if (document.querySelector('.testimonial-slider-container')) {
+    testimonialInterval = setInterval(nextTestimonial, 5000);
+}
 
 if(nextBtn && prevBtn) {
     nextBtn.addEventListener('click', () => {
-        clearInterval(testimonialInterval);
+        if (testimonialInterval) clearInterval(testimonialInterval);
+        
+        // Click animation
+        gsap.to(nextBtn, { scale: 0.8, duration: 0.1, yoyo: true, repeat: 1 });
+        
         currentIdx = (currentIdx + 1) % testimonialData.length;
         updateSlider(currentIdx, 'next');
-        testimonialInterval = setInterval(nextTestimonial, 5000);
+        
+        if (document.querySelector('.testimonial-slider-container')) {
+            testimonialInterval = setInterval(nextTestimonial, 5000);
+        }
     });
 
     prevBtn.addEventListener('click', () => {
-        clearInterval(testimonialInterval);
+        if (testimonialInterval) clearInterval(testimonialInterval);
+        
+        // Click animation
+        gsap.to(prevBtn, { scale: 0.8, duration: 0.1, yoyo: true, repeat: 1 });
+        
         currentIdx = (currentIdx - 1 + testimonialData.length) % testimonialData.length;
         updateSlider(currentIdx, 'prev');
-        testimonialInterval = setInterval(nextTestimonial, 5000);
+        
+        if (document.querySelector('.testimonial-slider-container')) {
+            testimonialInterval = setInterval(nextTestimonial, 5000);
+        }
     });
 }
 
-// Navbar background change on scroll
-window.addEventListener('scroll', () => {
-    const header = document.querySelector('header');
-    if (window.scrollY > 50) {
-        header.style.padding = '15px 5%';
-        header.style.background = '#020202';
-    } else {
-        header.style.padding = '20px 5%';
-        header.style.background = '#020202';
-    }
-});
 
 // Custom cursor effect (Optional but premium)
 const cursor = document.createElement('div');
@@ -356,6 +407,10 @@ if (document.querySelector(".how-we-work")) {
     });
 }
 
+    // Final Refresh after all animations are set
+    ScrollTrigger.refresh();
+});
+
 // =========================================
 // Mobile Navigation Menu Logic
 // =========================================
@@ -412,7 +467,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Ensure elements visibility toggles correctly based on screen size
         const handleResize = () => {
-            if (window.innerWidth > 768) {
+            if (window.innerWidth > 991) {
                 hamburger.style.display = 'none';
                 closeBtn.style.display = 'none';
                 nav.classList.remove('active');
