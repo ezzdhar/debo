@@ -1028,15 +1028,23 @@ footer {
 .social-links {
     display: flex;
     gap: 25px;
+    position: relative;
+    z-index: 20;
+}
+
+.social-links a {
+    display: inline-block;
+    transition: var(--transition-smooth);
 }
 
 .social-links a img {
     width: 22px;
     height: 22px;
-    transition: var(--transition-smooth);
+    display: block;
     filter: brightness(0) invert(1);
     /* Ensure icons are white */
     opacity: 0.7;
+    transition: inherit;
 }
 
 .social-links a:hover img {
